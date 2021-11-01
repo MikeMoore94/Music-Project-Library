@@ -1,3 +1,7 @@
+from django.http import response
+from django.http.response import HttpResponse
+
+
 from django.shortcuts import render
 from .models import Song
 from rest_framework.views import APIView
@@ -22,7 +26,6 @@ class SongList(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class SongDetail(APIView):
-    
     def get_by_id(self, pk):
         try:
             return Song.objects.get(pk=pk)
